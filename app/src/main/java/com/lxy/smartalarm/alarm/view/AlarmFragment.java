@@ -1,6 +1,7 @@
 package com.lxy.smartalarm.alarm.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -14,8 +15,7 @@ import android.view.ViewGroup;
 import com.lxy.smartalarm.R;
 import com.lxy.smartalarm.alarm.adapter.AlarmAdapter;
 import com.lxy.smartalarm.alarm.db.AlarmDB;
-import com.lxy.smartalarm.alarm.view.dummy.DummyContent;
-import com.lxy.smartalarm.alarm.view.dummy.DummyContent.DummyItem;
+import com.lxy.smartalarm.alarm.ui.AddAlarmActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,20 +42,15 @@ public class AlarmFragment extends Fragment {
         alarmAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addAlarm();
+//                addAlarm();
+                Intent intent = new Intent(getActivity(), AddAlarmActivity.class);
+                startActivity(intent);
             }
+
         });
     }
 
-    private void addAlarm() {
-        AlarmDB alarmDB = new AlarmDB();
-        alarmDB.setTime("12:00");
-        alarmDB.setContent("明天买房");
-        alarmDB.setType("每天");
-        alarmDB.setLater("12小时后响铃");
-        list.add(alarmDB);
-        alarmAdapter.notifyDataSetChanged();
-    }
+
 
     private void initView(View view) {
         alarmRecycler = view.findViewById(R.id.alarm_recycler);
@@ -66,5 +61,12 @@ public class AlarmFragment extends Fragment {
         alarmRecycler.setAdapter(alarmAdapter);
     }
 
-
+    private void addAlarm() {
+        AlarmDB alarmDB = new AlarmDB();
+        alarmDB.setTime("12:00");
+        alarmDB.setContent("明天买房");
+        alarmDB.setType("每天");
+        list.add(alarmDB);
+        alarmAdapter.notifyDataSetChanged();
+    }
 }

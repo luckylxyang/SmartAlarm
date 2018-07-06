@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SmartAlarm</string>
+    <string name="test">我是假的</string>
+
+
+    <string name="add_alarm_repeat">重复</string>
+    <string name="add_alarm_voice">铃声</string>
+    <string name="add_alarm_vibrate">响铃方式</string>
+    <string name="add_alarm_note">备注</string>
 </resources>

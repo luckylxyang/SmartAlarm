@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lxy.smartalarm.alarm.ui.AddAlarmActivity">
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/x10"
+            android:id="@+id/add_alarm_repeat"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="@dimen/x10"
+                android:layout_marginStart="@dimen/x20"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                android:text="@string/add_alarm_repeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/add_tv_repeat"
+                android:layout_margin="@dimen/x10"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/gray"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/add_iv_repeat"
+                android:layout_marginRight="@dimen/x20"
+                android:text="@string/test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/add_iv_repeat"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x8"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/right"
+                android:layout_width="@dimen/x20"
+                android:layout_height="@dimen/x20" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/x10"
+            android:id="@+id/add_alarm_voice"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="@dimen/x10"
+                android:layout_marginStart="@dimen/x20"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                android:text="@string/add_alarm_voice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/add_tv_voice"
+                android:layout_margin="@dimen/x10"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/gray"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/add_iv_voice"
+                android:layout_marginRight="@dimen/x20"
+                android:text="@string/test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/add_iv_voice"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x8"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/right"
+                android:layout_width="@dimen/x20"
+                android:layout_height="@dimen/x20" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/x10"
+            android:id="@+id/add_alarm_vibrate"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="@dimen/x10"
+                android:layout_marginStart="@dimen/x20"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                android:text="@string/add_alarm_vibrate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/add_tv_vibrate"
+                android:layout_margin="@dimen/x10"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/gray"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/add_iv_vibrate"
+                android:layout_marginRight="@dimen/x20"
+                android:text="@string/test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/add_iv_vibrate"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x8"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/right"
+                android:layout_width="@dimen/x20"
+                android:layout_height="@dimen/x20" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/x10"
+            android:id="@+id/add_alarm_note"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginStart="@dimen/x20"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:text="@string/add_alarm_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/add_et_note"
+                android:layout_margin="@dimen/x10"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/gray"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/x20"
+                android:layout_gravity="center"
+                android:text="@string/test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/add_iv_note"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/x8"
+                android:background="@drawable/right"
+                android:layout_width="@dimen/x20"
+                android:layout_height="@dimen/x20" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
