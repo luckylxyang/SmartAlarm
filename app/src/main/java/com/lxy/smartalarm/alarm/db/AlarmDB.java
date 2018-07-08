@@ -19,22 +19,65 @@ public class AlarmDB {
     @Property
     private String type;// 闹钟类型
     @Property
-    private String content; // 闹钟备注
+    private boolean open;// 是否开启
     @Property
-    private boolean open;// 剩余时间
+    private String repeatType;// 重复类型
+    @Property
+    private String voicePath;// 铃声
+    @Property
+    private String remind;// 响铃方式
+    @Property
+    private String note;// 闹钟备注
 
-    @Generated(hash = 1384754379)
-    public AlarmDB(Long id, String time, String type, String content,
-            boolean open) {
+
+    @Generated(hash = 1821644146)
+    public AlarmDB(Long id, String time, String type, boolean open,
+            String repeatType, String voicePath, String remind, String note) {
         this.id = id;
         this.time = time;
         this.type = type;
-        this.content = content;
         this.open = open;
+        this.repeatType = repeatType;
+        this.voicePath = voicePath;
+        this.remind = remind;
+        this.note = note;
     }
 
     @Generated(hash = 218204771)
     public AlarmDB() {
+    }
+
+
+    public String getRepeatType() {
+        return repeatType;
+    }
+
+    public void setRepeatType(String repeatType) {
+        this.repeatType = repeatType;
+    }
+
+    public String getVoicePath() {
+        return voicePath;
+    }
+
+    public void setVoicePath(String voicePath) {
+        this.voicePath = voicePath;
+    }
+
+    public String getRemind() {
+        return remind;
+    }
+
+    public void setRemind(String remind) {
+        this.remind = remind;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public String getTime() {
@@ -51,14 +94,6 @@ public class AlarmDB {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public boolean isOpen() {

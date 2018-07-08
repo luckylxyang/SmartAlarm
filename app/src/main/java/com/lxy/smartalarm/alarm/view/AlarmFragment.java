@@ -64,7 +64,7 @@ public class AlarmFragment extends Fragment {
     private void addAlarm() {
         AlarmDB alarmDB = new AlarmDB();
         alarmDB.setTime("12:00");
-        alarmDB.setContent("明天买房");
+        alarmDB.setNote("明天买房");
         alarmDB.setType("每天");
         list.add(alarmDB);
         alarmAdapter.notifyDataSetChanged();

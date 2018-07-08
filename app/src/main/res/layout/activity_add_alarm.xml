@@ -5,12 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context="com.lxy.smartalarm.alarm.ui.AddAlarmActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:fitsSystemWindows="true"
+        android:layout_height="?attr/actionBarSize">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/add_alarm_bar"
+            app:navigationIcon="@drawable/back"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:textSize="@dimen/text_size"
+                android:text="@string/activity_add_alarm"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <TimePicker
+            android:id="@+id/add_alarm_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TimePicker>
 
     </LinearLayout>
 
@@ -163,13 +192,14 @@
                 android:layout_weight="1"
                 android:layout_marginRight="@dimen/x20"
                 android:layout_gravity="center"
-                android:text="@string/test"
+                android:hint="@string/activity_add_alarm_et"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <ImageView
                 android:id="@+id/add_iv_note"
                 android:layout_gravity="center"
+                android:visibility="gone"
                 android:layout_marginRight="@dimen/x8"
                 android:background="@drawable/right"
                 android:layout_width="@dimen/x20"

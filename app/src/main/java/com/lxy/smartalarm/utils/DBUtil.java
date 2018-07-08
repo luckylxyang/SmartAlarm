@@ -15,7 +15,9 @@ public class DBUtil {
     private DaoSession daoSession;
     private static DBUtil dbUtil;
 
-    private DBUtil(){}
+    private DBUtil(){
+//        helper = new DaoMaster.DevOpenHelper()
+    }
 
     public static DBUtil getInstance() {
         if (dbUtil == null){

@@ -25,7 +25,7 @@ public class AlarmAdapter extends BaseAdapter<AlarmDB> {
     @Override
     protected void convert(ViewHolder holder, AlarmDB alarmDB, int position) {
         holder.setText(R.id.alarm_time,alarmDB.getTime());
-        holder.setText(R.id.alarm_content,alarmDB.getContent());
+        holder.setText(R.id.alarm_content,alarmDB.getNote());
         holder.setText(R.id.alarm_type,alarmDB.getType());
     }
 
