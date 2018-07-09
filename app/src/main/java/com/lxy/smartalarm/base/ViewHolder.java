@@ -44,19 +44,28 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         return (T) view;
     }
 
-    public void setText(int viewId,String message){
-        TextView tv = getView(viewId);
-        tv.setText(message);
+    public ViewHolder setOnClickListener(int viewId, View.OnClickListener listener) {
+        View view = getView(viewId);
+        view.setOnClickListener(listener);
+        return this;
     }
 
-    public void setText(int viewId,Spannable message){
+    public ViewHolder setText(int viewId,String message){
         TextView tv = getView(viewId);
         tv.setText(message);
+        return this;
     }
 
-    public void setText(int viewId,CharSequence message){
+    public ViewHolder setText(int viewId,Spannable message){
         TextView tv = getView(viewId);
         tv.setText(message);
+        return this;
+    }
+
+    public ViewHolder setText(int viewId,CharSequence message){
+        TextView tv = getView(viewId);
+        tv.setText(message);
+        return this;
     }
 
 

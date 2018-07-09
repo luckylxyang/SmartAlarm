@@ -38,14 +38,21 @@ public class AddAlarmActivity extends AppCompatActivity implements View.OnClickL
     private ImageView addIvNote;
     private Toolbar toolbar;
     private TimePicker timePicker;
-    private AlarmDB alarmDB = new AlarmDB();
+    private AlarmDB alarmDB ;
+    private String[] vibrates;
+    private String[] repeatTypes ;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_alarm);
-
+        AlarmDB db = (AlarmDB) getIntent().getSerializableExtra("alarmDb");
+        if (db != null){
+            alarmDB = db;
+        }else {
+            alarmDB = new AlarmDB();
+        }
         initToolbar();
         initView();
     }
@@ -70,6 +77,7 @@ public class AddAlarmActivity extends AppCompatActivity implements View.OnClickL
             public boolean onMenuItemClick(MenuItem item) {
                 saveData();
                 DialogUtils.showToast(AddAlarmActivity.this,R.string.sure);
+                AddAlarmActivity.this.setResult(101);
                 finish();
                 return true;
             }
@@ -97,6 +105,17 @@ public class AddAlarmActivity extends AppCompatActivity implements View.OnClickL
         addEtNote.addTextChangedListener(noteWatcher);
 
         timePicker = findViewById(R.id.add_alarm_time);
+        String[] times = alarmDB.getTime().split(":");
+        timePicker.setCurrentHour(Integer.parseInt(times[0]));
+        timePicker.setCurrentMinute(Integer.parseInt(times[1]));
+
+        repeatTypes = getResources().getStringArray(R.array.strings_repeat);
+        vibrates = getResources().getStringArray(R.array.strings_vibrate);
+        addTvRepeat.setText(repeatTypes[alarmDB.getRepeatType()]);
+        addTvVibrate.setText(vibrates[alarmDB.getRemind()]);
+//        addTvVoice.setText(alarmDB.getVoicePath());
+        addEtNote.setText(alarmDB.getNote());
+
 
     }
 
@@ -122,40 +141,22 @@ public class AddAlarmActivity extends AppCompatActivity implements View.OnClickL
                 addTvVoice.setText(R.string.activity_add_alarm_voice);
                 break;
             case R.id.add_alarm_vibrate:
-                final String[] vibrates = getResources().getStringArray(R.array.strings_vibrate);
+
                 DialogUtils.dialogList(this, vibrates, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         addTvVibrate.setText(vibrates[i]);
-                        switch (i){
-                            case 0:
-                                alarmDB.setRemind(Constants.REMIND_TYPE_ONLY);break;
-                            case 1:
-                                alarmDB.setRemind(Constants.REMIND_TYPE_VIBRATE);break;
-                        }
+                        alarmDB.setRemind(i);
                     }
                 });
                 break;
             case R.id.add_alarm_repeat:
-                final String[] strs = getResources().getStringArray(R.array.strings_repeat);
-                DialogUtils.dialogList(this, strs, new DialogInterface.OnClickListener() {
+
+                DialogUtils.dialogList(this, repeatTypes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        addTvRepeat.setText(strs[i]);
-                        switch (i){
-                            case 0:
-                                alarmDB.setRepeatType(Constants.REPEAT_TYPE_EVERYDAY);break;
-                            case 1:
-                                alarmDB.setRepeatType(Constants.REPEAT_TYPE_ONE);break;
-                            case 2:
-                                alarmDB.setRepeatType(Constants.REPEAT_TYPE_WORK);break;
-                            case 3:
-                                alarmDB.setRepeatType(Constants.REPEAT_TYPE_HOLIDAY);break;
-                            case 4:
-                                alarmDB.setRepeatType(Constants.REPEAT_TYPE_FIVE);break;
-                            case 5:
-                                alarmDB.setRepeatType(Constants.REPEAT_TYPE_CUSTOM);break;
-                        }
+                        addTvRepeat.setText(repeatTypes[i]);
+                        alarmDB.setRepeatType(i);
                     }
                 });
                 break;
@@ -170,14 +171,13 @@ public class AddAlarmActivity extends AppCompatActivity implements View.OnClickL
      * 存储闹钟数据
      */
     private void saveData() {
-        AlarmDB db = new AlarmDB();
-        db.setNote(addEtNote.getText().toString());
-        db.setRemind(addTvVibrate.getText().toString());
-        db.setTime(timePicker.getCurrentHour() + ":" + timePicker.getCurrentMinute());
+        alarmDB.setNote(addEtNote.getText().toString());
+        alarmDB.setTime(timePicker.getCurrentHour() + ":" + timePicker.getCurrentMinute());
+        alarmDB.setOpen(true);
 //        db.setVoicePath(addTvVoice.getText().toString());
         //TODO 未写存储闹钟铃声来源
-        Log.i("time",db.getTime() + " cc");
-        DBUtil.getInstance().getDaoSession().getAlarmDBDao().save(db);
+        Log.i("time",alarmDB.getTime() + " cc");
+        DBUtil.getInstance().getDaoSession().getAlarmDBDao().save(alarmDB);
     }
 
     private TextWatcher noteWatcher = new TextWatcher() {

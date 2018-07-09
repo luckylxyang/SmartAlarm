@@ -39,6 +39,7 @@ public class DialogUtils {
         builder.setTitle(R.string.dialog_title);
         builder.setMessage(strId);
         builder.setPositiveButton(R.string.sure,listener);
+        builder.setNegativeButton(R.string.cancel,null);
         builder.show();
     }
 

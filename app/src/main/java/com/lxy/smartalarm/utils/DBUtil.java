@@ -16,7 +16,9 @@ public class DBUtil {
     private static DBUtil dbUtil;
 
     private DBUtil(){
-//        helper = new DaoMaster.DevOpenHelper()
+        helper = new DaoMaster.DevOpenHelper(SApplication.getContext(),"smartalarm.db",null);
+        DaoMaster daoMaster = new DaoMaster(helper.getWritableDatabase());
+        daoSession = daoMaster.newSession();
     }
 
     public static DBUtil getInstance() {
@@ -26,14 +28,13 @@ public class DBUtil {
         return dbUtil;
     }
 
+
     /**
      * 获取一个DaoSession
      * @return
      */
     public DaoSession getDaoSession(){
-        helper = new DaoMaster.DevOpenHelper(SApplication.getContext(),"smartalarm.db",null);
-        DaoMaster daoMaster = new DaoMaster(helper.getWritableDb());
-        daoSession = daoMaster.newSession();
+
         return daoSession;
     }
 }

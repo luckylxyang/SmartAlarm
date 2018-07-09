@@ -41,9 +41,12 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         convert(holder, list.get(position),position);
+
     }
 
     protected abstract void convert(ViewHolder holder, T t,int position);
+
+
 
     @Override
     public int getItemCount() {
