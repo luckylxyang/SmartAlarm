@@ -21,7 +21,6 @@ import android.widget.TimePicker;
 
 import com.lxy.smartalarm.R;
 import com.lxy.smartalarm.alarm.db.AlarmDB;
-import com.lxy.smartalarm.base.Constants;
 import com.lxy.smartalarm.utils.DBUtil;
 import com.lxy.smartalarm.utils.DialogUtils;
 
@@ -47,12 +46,7 @@ public class AddAlarmActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_alarm);
-        AlarmDB db = (AlarmDB) getIntent().getSerializableExtra("alarmDb");
-        if (db != null){
-            alarmDB = db;
-        }else {
-            alarmDB = new AlarmDB();
-        }
+
         initToolbar();
         initView();
     }
@@ -76,7 +70,7 @@ public class AddAlarmActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 saveData();
-                DialogUtils.showToast(AddAlarmActivity.this,R.string.sure);
+                DialogUtils.toast(AddAlarmActivity.this,R.string.sure);
                 AddAlarmActivity.this.setResult(101);
                 finish();
                 return true;
@@ -105,16 +99,28 @@ public class AddAlarmActivity extends AppCompatActivity implements View.OnClickL
         addEtNote.addTextChangedListener(noteWatcher);
 
         timePicker = findViewById(R.id.add_alarm_time);
-        String[] times = alarmDB.getTime().split(":");
-        timePicker.setCurrentHour(Integer.parseInt(times[0]));
-        timePicker.setCurrentMinute(Integer.parseInt(times[1]));
+
 
         repeatTypes = getResources().getStringArray(R.array.strings_repeat);
         vibrates = getResources().getStringArray(R.array.strings_vibrate);
-        addTvRepeat.setText(repeatTypes[alarmDB.getRepeatType()]);
-        addTvVibrate.setText(vibrates[alarmDB.getRemind()]);
+        AlarmDB db = (AlarmDB) getIntent().getSerializableExtra("alarmDb");
+
+        if (db != null){
+            alarmDB = db;
+            String[] times = alarmDB.getTime().split(":");
+            timePicker.setCurrentHour(Integer.parseInt(times[0]));
+            timePicker.setCurrentMinute(Integer.parseInt(times[1]));
+
+
+            addTvRepeat.setText(repeatTypes[alarmDB.getRepeatType()].split("（")[0]);
+            addTvVibrate.setText(vibrates[alarmDB.getRemind()]);
 //        addTvVoice.setText(alarmDB.getVoicePath());
-        addEtNote.setText(alarmDB.getNote());
+            addEtNote.setText(alarmDB.getNote());
+            addEtNote.setSelection(alarmDB.getNote().length());
+        }else {
+            alarmDB = new AlarmDB();
+        }
+
 
 
     }
@@ -155,7 +161,7 @@ public class AddAlarmActivity extends AppCompatActivity implements View.OnClickL
                 DialogUtils.dialogList(this, repeatTypes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        addTvRepeat.setText(repeatTypes[i]);
+                        addTvRepeat.setText(repeatTypes[i].split("（")[0]);
                         alarmDB.setRepeatType(i);
                     }
                 });

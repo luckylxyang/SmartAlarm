@@ -14,6 +14,7 @@
     <string name="activity_add_alarm_voice">默认铃声</string>
     <string name="activity_add_alarm_et">闹钟备注</string>
     <string name="activity_add_alarm">添加闹钟</string>
+    <string name="time_out">时间到了</string>
 
 
     <string-array name="strings_vibrate">
@@ -24,8 +25,8 @@
     <string-array name="strings_repeat">
         <item>每天</item>
         <item>只响一次</item>
-        <item>法定工作日(跳过节假日)</item>
-        <item>法定节假日(跳过工作日)</item>
+        <item>法定工作日（智能跳过节假日）</item>
+        <item>法定节假日（智能跳过工作日）</item>
         <item>周一至周五</item>
         <item>自定义</item>
     </string-array>

@@ -50,6 +50,12 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    public ViewHolder setOnLongClickListener(int viewId, View.OnLongClickListener listener) {
+        View view = getView(viewId);
+        view.setOnLongClickListener(listener);
+        return this;
+    }
+
     public ViewHolder setText(int viewId,String message){
         TextView tv = getView(viewId);
         tv.setText(message);

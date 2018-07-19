@@ -13,32 +13,38 @@
         <TextView
             android:id="@+id/alarm_time"
             android:text="00:00"
-            android:textSize="@dimen/x30"
+            android:textSize="@dimen/x24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
+            android:layout_marginTop="@dimen/text_margin"
+            android:layout_marginStart="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem" />
 
         <TextView
             android:id="@+id/alarm_content"
             android:text="00:00"
+            android:textSize="@dimen/text_min_size"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:layout_toRightOf="@id/alarm_time"
             android:layout_alignBaseline="@id/alarm_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:textAppearance="?attr/textAppearanceListItem" />
+            android:layout_margin="@dimen/x14" />
 
         <TextView
             android:id="@+id/alarm_type"
             android:text="00:00"
+            android:textSize="@dimen/text_min_size"
             android:layout_below="@id/alarm_time"
             android:layout_alignLeft="@id/alarm_time"
+            android:layout_marginBottom="@dimen/x14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/alarm_later"
+            android:textSize="@dimen/text_min_size"
             android:layout_toRightOf="@id/alarm_type"
             android:layout_below="@id/alarm_time"
             android:text="00:00"

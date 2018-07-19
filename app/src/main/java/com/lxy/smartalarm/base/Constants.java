@@ -6,6 +6,8 @@ package com.lxy.smartalarm.base;
 
 public class Constants {
 
+    public static String PREFER_NAME = "PREFER_NAME";
+
     // 闹钟重复5种类型
     // 每天
     public static int REPEAT_TYPE_EVERYDAY = 0;

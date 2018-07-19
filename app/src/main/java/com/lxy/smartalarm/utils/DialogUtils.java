@@ -45,16 +45,16 @@ public class DialogUtils {
 
     private static Toast toast;
 
-    public static void showToast(Context context,String message){
+    public static void toast(Context context, String message){
         if (toast == null){
-            toast = new Toast(context);
+            toast = Toast.makeText(context,message,Toast.LENGTH_SHORT);
         }
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setText(message);
         toast.show();
     }
 
-    public static void showToast(Context context,int message){
+    public static void toast(Context context, int message){
         if (toast == null){
             toast = Toast.makeText(context,message,Toast.LENGTH_SHORT);
         }
