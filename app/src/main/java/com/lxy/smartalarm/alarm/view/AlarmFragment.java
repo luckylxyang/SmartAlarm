@@ -23,6 +23,7 @@ import com.lxy.smartalarm.alarm.ui.AddAlarmActivity;
 import com.lxy.smartalarm.alarm.ui.AlarmServer;
 import com.lxy.smartalarm.base.BaseAdapter;
 import com.lxy.smartalarm.utils.DBUtil;
+import com.lxy.smartalarm.utils.DateUtil;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -98,27 +99,26 @@ public class AlarmFragment extends Fragment {
                 int min = Integer.parseInt(db.split(":")[1]);
                 Calendar calendar = Calendar.getInstance();
 
-                int nowHour = calendar.get(Calendar.HOUR);
+                int nowHour = calendar.get(Calendar.HOUR_OF_DAY);
                 int nowMin = calendar.get(Calendar.MINUTE);
-                Log.i("time",nowHour + "    cc");
-                long time = 0L;
+                Log.i("time",nowHour + "    nowHour");
+                long subTime = 0L;
+                String timeOut = "";
                 if (hour >= nowHour && min > nowMin) {
-                    time = ((hour - nowHour) * 60 + (nowMin - min)) * 60 * 1000;
+                    // 当前时间还未到响铃时间
+                    subTime = ((hour - nowHour) * 60 + (nowMin - min)) * 60 * 1000;
+                    timeOut = (hour - nowHour) + "分钟" + (nowMin - min) + "分钟后响铃";
                 } else {
                     long temp = (Math.abs(hour - nowHour) * 60 + Math.abs(nowMin - min)) * 60 * 1000;
-                    time = (24 * 60 * 60 * 1000) - temp;
+                    subTime = (24 * 60 * 60 * 1000) - temp;
                 }
-                Log.i("time",time + "    cc");
-                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+ time, pendingIntent);
+                Log.i("time",subTime + "    cc");
+                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+ subTime, pendingIntent);
             }
+            alarmAdapter.notifyDataSetChanged();
         }
 
-
-
-
     }
-
-
 
 
     @Override
@@ -128,11 +128,5 @@ public class AlarmFragment extends Fragment {
 //        initAlarmManager();
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        Log.i("result",requestCode + "  " + resultCode);
-        if (requestCode == REQUEST_CODE){
-            initData();
-        }
-    }
+
 }

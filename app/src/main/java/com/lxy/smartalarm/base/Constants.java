@@ -33,4 +33,7 @@ public class Constants {
     public static String VOICE_TYPE_LOCAL = "VOICE_TYPE_LOCAL";
     // 动态铃声
     public static String VOICE_TYPE_DYNAMIC = "VOICE_TYPE_DYNAMIC";
+
+
+    public static String WEATHER_URL="https://free-api.heweather.com/s6/weather/";
 }

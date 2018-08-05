@@ -30,4 +30,6 @@
         <item>周一至周五</item>
         <item>自定义</item>
     </string-array>
+
+    <string name="search_city">https://search.heweather.com/</string>
 </resources>

@@ -70,7 +70,6 @@ public class AddAlarmActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 saveData();
-                DialogUtils.toast(AddAlarmActivity.this,R.string.sure);
                 AddAlarmActivity.this.setResult(101);
                 finish();
                 return true;
@@ -119,9 +118,9 @@ public class AddAlarmActivity extends AppCompatActivity implements View.OnClickL
             addEtNote.setSelection(alarmDB.getNote().length());
         }else {
             alarmDB = new AlarmDB();
+            addTvRepeat.setText(repeatTypes[1]);
+            addTvVibrate.setText(vibrates[1]);
         }
-
-
 
     }
 
@@ -182,7 +181,7 @@ public class AddAlarmActivity extends AppCompatActivity implements View.OnClickL
         alarmDB.setOpen(true);
 //        db.setVoicePath(addTvVoice.getText().toString());
         //TODO 未写存储闹钟铃声来源
-        Log.i("time",alarmDB.getTime() + " cc");
+        Log.i("timeAdd",alarmDB.getTime() + " cc");
         DBUtil.getInstance().getDaoSession().getAlarmDBDao().save(alarmDB);
     }
 

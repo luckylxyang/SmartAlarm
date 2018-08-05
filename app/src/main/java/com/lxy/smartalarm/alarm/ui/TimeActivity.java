@@ -20,7 +20,18 @@ import com.iflytek.cloud.SynthesizerListener;
 import com.iflytek.sunflower.FlowerCollector;
 import com.lxy.smartalarm.R;
 import com.lxy.smartalarm.base.Constants;
+import com.lxy.smartalarm.network.APIManager;
 import com.lxy.smartalarm.utils.DialogUtils;
+import com.lxy.smartalarm.weather.bean.Weather;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class TimeActivity extends AppCompatActivity {
 
@@ -43,7 +54,40 @@ public class TimeActivity extends AppCompatActivity {
 
         initView();
         initListener();
-        alarmBtnNext.performClick();
+        getWeather();
+//        alarmBtnNext.performClick();
+    }
+
+    private void getWeather() {
+        Map<String,String> map = new HashMap<>();
+        map.put("location","chongqing");
+        map.put("key","12693de64b2e406c91d98d98333cd89e");
+        APIManager.getManager().getWeatherServer().getCity("chongqing","12693de64b2e406c91d98d98333cd89e")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Weather>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Weather weather) {
+                        str = str + weather.status;
+                        Log.i("getweather",weather.toString());
+                        alarmBtnNext.performClick();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.i("getweather",e.toString());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     private void initListener() {
