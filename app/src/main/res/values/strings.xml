@@ -31,5 +31,11 @@
         <item>自定义</item>
     </string-array>
 
-    <string name="search_city">https://search.heweather.com/</string>
+   <string name="speech_set_language">语言</string>
+   <string name="speech_set_accept">方言</string>
+   <string name="speech_set_speed">语速</string>
+   <string name="speech_set_volume">音量</string>
+   <string name="speech_set_pitch">语调</string>
+   <string name="speech_set_sample_rate">音频采样率</string>
+   <string name="speech_set_special">发音人特征</string>
 </resources>
