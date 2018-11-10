@@ -7,6 +7,7 @@ package com.lxy.smartalarm.base;
 public class Constants {
 
     public static String PREFER_NAME = "PREFER_NAME";
+    public static String PREFER_SPEECH_SET = "SPEECH_SET";
 
     // 闹钟重复5种类型
     // 每天
@@ -35,5 +36,5 @@ public class Constants {
     public static String VOICE_TYPE_DYNAMIC = "VOICE_TYPE_DYNAMIC";
 
 
-    public static String WEATHER_URL="https://free-api.heweather.com/s6/weather/";
+    public static String WEATHER_URL = "https://free-api.heweather.com/s6/weather/";
 }

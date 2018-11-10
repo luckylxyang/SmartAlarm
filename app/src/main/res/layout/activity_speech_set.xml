@@ -7,9 +7,22 @@
     android:orientation="vertical"
     tools:context="com.lxy.smartalarm.speech.SpeechSetActivity">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:elevation="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/speech_set_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
     <RelativeLayout
         android:layout_marginTop="@dimen/x10"
-        android:id="@+id/add_alarm_vibrate"
+        android:id="@+id/speech_set_language"
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -30,14 +43,14 @@
             android:textSize="@dimen/text_size"
             android:textColor="@color/gray"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/add_iv_vibrate"
+            android:layout_toLeftOf="@+id/speech_set_iv_language"
             android:layout_marginRight="@dimen/x20"
             android:text="@string/test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <ImageView
-            android:id="@+id/add_iv_vibrate"
+            android:id="@+id/speech_set_iv_language"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/x8"
             android:layout_alignParentRight="true"
@@ -45,4 +58,152 @@
             android:layout_width="@dimen/x20"
             android:layout_height="@dimen/x20" />
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/x10"
+        android:id="@+id/speech_set_people"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginTop="@dimen/x10"
+            android:layout_marginStart="@dimen/x20"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/black"
+            android:layout_centerVertical="true"
+            android:text="@string/speech_set_people"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/speech_set_tv_people"
+            android:layout_margin="@dimen/x10"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/gray"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/speech_set_iv_people"
+            android:layout_marginRight="@dimen/x20"
+            android:text="@string/test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/speech_set_iv_people"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x8"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/right"
+            android:layout_width="@dimen/x20"
+            android:layout_height="@dimen/x20" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x10"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/speech_set_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/x20"
+            android:layout_gravity="center"
+            android:text="@string/speech_set_volume"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size" />
+
+        <SeekBar
+            android:id="@+id/speech_set_volume"
+            android:layout_width="@dimen/x240"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:layout_gravity="center"
+            android:padding="@dimen/x10" />
+
+        <TextView
+            android:id="@+id/speech_set_volume_value"
+            android:layout_gravity="center"
+            android:text="0"
+            android:padding="@dimen/x10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/x10"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginTop="@dimen/x10"
+            android:layout_marginStart="@dimen/x20"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:text="@string/speech_set_pitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <SeekBar
+            android:id="@+id/speech_set_pitch"
+            android:layout_width="@dimen/x240"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:layout_gravity="center"
+            android:padding="@dimen/x10" />
+
+        <TextView
+            android:id="@+id/speech_set_pitch_value"
+            android:layout_gravity="center"
+            android:text="0"
+            android:padding="@dimen/x10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/x10"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginTop="@dimen/x10"
+            android:layout_marginStart="@dimen/x20"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:text="@string/speech_set_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <SeekBar
+            android:id="@+id/speech_set_speed"
+            android:layout_width="@dimen/x240"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:layout_gravity="center"
+            android:padding="@dimen/x10" />
+
+        <TextView
+            android:id="@+id/speech_set_speed_value"
+            android:layout_gravity="center"
+            android:text="0"
+            android:padding="@dimen/x10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size" />
+
+    </LinearLayout>
 </LinearLayout>

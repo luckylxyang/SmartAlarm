@@ -1,5 +1,9 @@
 package com.lxy.smartalarm.network;
 
+import android.app.usage.NetworkStatsManager;
+import android.content.Context;
+
+import com.lxy.smartalarm.SApplication;
 import com.lxy.smartalarm.base.Constants;
 import com.lxy.smartalarm.weather.net.WeatherServer;
 
@@ -34,8 +38,7 @@ public class APIManager {
     }
 
     public WeatherServer getWeatherServer(){
-        OkHttpClient client = new OkHttpClient().newBuilder()
-                .build();
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
         if (weatherServer == null){
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(Constants.WEATHER_URL)

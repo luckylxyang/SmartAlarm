@@ -1,5 +1,6 @@
 package com.lxy.smartalarm.weather.net;
 
+import com.lxy.smartalarm.weather.bean.DailyForecast;
 import com.lxy.smartalarm.weather.bean.Weather;
 
 import java.util.Map;
@@ -22,7 +23,12 @@ public interface WeatherServer {
      * @return
      */
     @HTTP(method = "GET" ,path = "https://search.heweather.com/find?")
-    public Observable<Weather> getCity(
+    Observable<Weather> getCity(
             @Query("location") String cityName,
+            @Query("key") String key);
+
+    @GET("forecast")
+    Observable<Weather> getWeatherForecast(
+            @Query("location") String location,
             @Query("key") String key);
 }

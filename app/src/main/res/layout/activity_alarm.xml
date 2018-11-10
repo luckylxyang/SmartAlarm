@@ -16,6 +16,9 @@
             android:id="@+id/alarm_tab"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextColor="@color/gray"
+            app:tabTextAppearance="@style/MyTabStyle"
             app:tabIndicatorHeight="0dp">
 
         </android.support.design.widget.TabLayout>

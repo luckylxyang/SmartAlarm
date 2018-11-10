@@ -73,9 +73,7 @@ public class TimeActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(Weather weather) {
-                        str = str + weather.status;
-                        Log.i("getweather",weather.toString());
-                        alarmBtnNext.performClick();
+
                     }
 
                     @Override

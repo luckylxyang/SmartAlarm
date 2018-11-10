@@ -1,5 +1,6 @@
 package com.lxy.smartalarm.utils;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
@@ -41,6 +42,36 @@ public class DialogUtils {
         builder.setPositiveButton(R.string.sure,listener);
         builder.setNegativeButton(R.string.cancel,null);
         builder.show();
+    }
+
+
+    public static Dialog getMultiItemDialog(Context context, String title, String[] items, boolean[] choiceItems,
+                                            DialogInterface.OnMultiChoiceClickListener multiListener,
+                                            DialogInterface.OnClickListener listener){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title)
+                .setMultiChoiceItems(items, choiceItems, multiListener)
+                .setPositiveButton("确定", listener);
+        return builder.create();
+    }
+
+    public static Dialog getMultiDialog(Context context, int title, String[] items,
+                                            DialogInterface.OnClickListener listener){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title)
+                .setItems(items,listener);
+        return builder.show();
+    }
+
+
+    public static Dialog getMultiItemDialog(Context context,String title,int items,boolean[] choiceItems,
+                                            DialogInterface.OnMultiChoiceClickListener multiListener,
+                                            DialogInterface.OnClickListener listener){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title)
+                .setMultiChoiceItems(items, choiceItems, multiListener)
+                .setPositiveButton("确定", listener);
+        return builder.create();
     }
 
     private static Toast toast;
